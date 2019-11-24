@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "50657454664",
+    "firebase_url": "https://stop-the-rape-010.firebaseio.com",
+    "project_id": "stop-the-rape-010",
+    "storage_bucket": "stop-the-rape-010.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50657454664:android:2bdc8461ff5833e52c867d",
+        "android_client_info": {
+          "package_name": "com.stoptherape.stoptherape"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "50657454664-0g258lj2otposco6t8m8pa9lctn19jvm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.stoptherape.stoptherape",
+            "certificate_hash": "9c407dbaa50a6bff1eb1eca7f99f81aeff1d86f4"
+          }
+        },
+        {
+          "client_id": "50657454664-dckf5318miaf9ab0keqv1bvibjse1ps4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBUwQIPnZ6JpPacjxcGbGJUZ7j6gG1Rjc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "50657454664-dckf5318miaf9ab0keqv1bvibjse1ps4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
