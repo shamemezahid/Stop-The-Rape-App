@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/defaultDarkBackgroundColor"
     tools:context=".TrustedContactsActivity">
 
 
@@ -19,6 +20,7 @@
         android:gravity="center"
         android:text="TRUSTED CONTACTS"
         android:textSize="35sp"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -37,8 +39,8 @@
         android:layout_marginRight="25dp"
         android:foregroundGravity="center"
         android:gravity="bottom|center"
-        android:hint="Enter Your Trusted Contact Numbers Here"
-        android:padding="5dp"
+        android:hint="Enter Your Trusted Contact Numbers"
+        android:padding="15dp"
         android:paddingLeft="5dp"
         android:paddingTop="5dp"
         android:paddingRight="5dp"
@@ -59,6 +61,8 @@
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
         android:layout_marginBottom="240dp"
+        android:background="@drawable/button_clicked"
+        android:textColor="#FFFFFF"
         android:text="Save Numbers" />
 
 
@@ -76,6 +80,8 @@
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
         android:layout_marginBottom="80dp"
+        android:background="@drawable/button_clicked"
+        android:textColor="#FFFFFF"
         android:text="Preview Numbers" />
 
 
@@ -93,6 +99,8 @@
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
         android:layout_marginBottom="160dp"
+        android:background="@drawable/button_clicked"
+        android:textColor="#FFFFFF"
         android:text="Delete Numbers" />
 
 
@@ -125,6 +133,6 @@
         android:foregroundGravity="center_vertical|center|center_horizontal"
         android:gravity="center"
         android:textColor="#FF1010"
-        android:text="Type all your trusted contact numbers separated with a comma, extra spaces and new lines don't matter. \nFor example: 13579, 24680, 12345 \n StopTheRape App will send your Help message to all the numbers when you need it to." />
+        android:text="Type all your trusted contact numbers separated with a comma. \nExtra spaces and new lines don't matter. \nFor example: 13579, 24680, 12345 \n StopTheRape App will send your Help message to all the numbers when you need it to." />
 
 </RelativeLayout>

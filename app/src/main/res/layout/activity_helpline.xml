@@ -4,14 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/defaultDarkBackgroundColor"
+
     tools:context=".HelplineActivity">
 
-
+    <TextView
+        android:id="@+id/PoliceHelplineLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="left"
+        android:text="POLICE HELPLINE"
+        android:textSize="35sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
     <ListView
         android:id="@+id/thanaListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ListView>
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/stopTheRape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PoliceHelplineLabel"
+        app:layout_constraintVertical_bias="1.0"></ListView>
+
+    <TextView
+        android:id="@+id/stopTheRape"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:text="#StopTheRape"
+        android:textAllCaps="true"
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

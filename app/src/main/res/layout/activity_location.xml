@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@color/defaultDarkBackgroundColor"
     tools:context=".LocationActivity">
 
     <TextView
@@ -18,6 +19,7 @@
         android:gravity="center"
         android:text="LOCATION INFO"
         android:textSize="35sp"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <TextView
@@ -32,6 +34,7 @@
         android:gravity="start"
         android:text="Latitude"
         android:textSize="20sp"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <TextView
@@ -44,6 +47,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="140dp"
+        android:textColor="#FFFFFF"
         android:gravity="start" />
 
     <TextView
@@ -58,6 +62,7 @@
         android:gravity="start"
         android:text="Longitude"
         android:textSize="20sp"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <TextView
@@ -70,6 +75,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="230dp"
+        android:textColor="#FFFFFF"
         android:gravity="start" />
 
     <TextView
@@ -84,6 +90,7 @@
         android:gravity="start"
         android:text="Time"
         android:textSize="20sp"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <TextView
@@ -96,6 +103,7 @@
         android:layout_marginTop="320dp"
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
+        android:textColor="#FFFFFF"
         android:gravity="start"
         />
 
@@ -111,6 +119,7 @@
         android:gravity="start"
         android:text="Phone ID"
         android:textSize="20sp"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <TextView
@@ -123,6 +132,7 @@
         android:layout_marginTop="410dp"
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
+        android:textColor="#FFFFFF"
         android:gravity="start"
         />
 
@@ -140,7 +150,10 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="80dp"
-        android:text="Share My Location To All Trusted Contacts" />
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_clicked"
+        android:text="Share My Location To All Trusted Contacts"
+        />
 
     <Button
         android:id="@+id/EditCustomHelpMessageButton"
@@ -152,6 +165,9 @@
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="210dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_clicked"
+        android:padding="15dp"
         android:text="CUSTOM MESSAGE" />
 
     <Button
@@ -164,6 +180,9 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="210dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_clicked"
+        android:padding="15dp"
         android:text="TRUSTED CONTACTS" />
 
     <TextView
@@ -176,6 +195,25 @@
         android:text="#StopTheRape"
         android:textAllCaps="true"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/refreshLocationButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="right|top"
+        android:text="↻"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        android:padding="1dp"
+        android:textAlignment="center"
+        android:background="@drawable/button_clicked"
+        />
 
 
     <!--

@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/defaultDarkBackgroundColor"
     tools:context=".RegisterActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:textColorHint="#000">
 
         <EditText
@@ -25,6 +28,7 @@
             android:ems="10"
             android:hint="User Name"
             android:inputType="text"
+            android:textColor="#FFFFFF"
             android:textColorHint="#D63B50" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -35,7 +39,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="146dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:textColorHint="#000">
 
         <EditText
@@ -47,6 +53,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Email"
+            android:textColor="#FFFFFF"
             android:inputType="textEmailAddress"
             android:textColorHint="#D63B50" />
 
@@ -58,7 +65,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
         android:textColorHint="#000">
 
         <EditText
@@ -70,6 +79,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Password"
+            android:textColor="#FFFFFF"
             android:inputType="textPassword"
             android:textColorHint="#D63B50" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -83,8 +93,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:text="Gender :"
-        android:textColor="#000"
-        android:textSize="18dp" />
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/genderSpinner"
@@ -108,11 +118,15 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginBottom="181dp"
         android:text="Sign Up"
         android:textColor="#D63B50"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:background="@drawable/button_clicked"
+        android:padding="10dp"/>
 
 
 
@@ -123,13 +137,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="123dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginBottom="100dp"
         android:layout_toEndOf="@+id/textView2"
         android:layout_toRightOf="@+id/textView2"
-        android:background="@null"
+        android:background="@drawable/button_clicked"
+        android:paddingStart="10sp"
+        android:paddingEnd="10sp"
         android:paddingRight="20dp"
         android:text="Log In"
-        android:textColor="#147DFF"
+        android:textAlignment="center"
+        android:textColor="#2196F3"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -143,7 +162,7 @@
         android:text="Sign Up"
         android:textAllCaps="true"
         android:textColor="#D63B50"
-        android:textSize="40sp"
+        android:textSize="35sp"
         android:textStyle="bold" />
 
     <TextView
@@ -158,19 +177,21 @@
         android:textAllCaps="true"
         android:textStyle="bold" />
 
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/logInbutton"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
         android:layout_toStartOf="@+id/logInbutton"
         android:layout_toLeftOf="@+id/logInbutton"
         android:text="Already an User?"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="#000"
+        android:textColor="#ffffff"
         android:textSize="18sp" />
-
 
     <ProgressBar
         android:id="@+id/progressBar"

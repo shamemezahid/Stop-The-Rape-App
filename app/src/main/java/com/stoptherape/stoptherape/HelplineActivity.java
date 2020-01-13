@@ -29,6 +29,8 @@ public class HelplineActivity extends AppCompatActivity {
 
     private ArrayList<String> data = new ArrayList<String>();
 
+    String policePhoneNumberString = "999";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,10 +85,10 @@ public class HelplineActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibe.vibrate(100);
-                    Toast.makeText(getContext(), "Button was clicked" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Calling Thana..." , Toast.LENGTH_SHORT).show();
 
                     Intent callIntent = new Intent(Intent.ACTION_CALL);
-                    callIntent.setData(Uri.parse("tel:01798619981"));
+                    callIntent.setData(Uri.parse("tel:"+policePhoneNumberString));
                     if (ActivityCompat.checkSelfPermission(HelplineActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {return;}
                     startActivity(callIntent);
 

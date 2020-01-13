@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/defaultDarkBackgroundColor"
     tools:context=".LoginActivity">
 
 
@@ -17,7 +18,7 @@
         android:text="Sign In"
         android:textAllCaps="true"
         android:textColor="#D63B50"
-        android:textSize="40sp"
+        android:textSize="35sp"
         android:textStyle="bold" />
 
 
@@ -27,7 +28,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="141dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:textColorHint="#000">
 
         <EditText
@@ -40,6 +43,7 @@
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
+            android:textColor="#FFFFFF"
             android:textColorHint="#D63B50" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,7 +53,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:textColorHint="#000">
 
         <EditText
@@ -62,6 +68,7 @@
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
+            android:textColor="#FFFFFF"
             android:textColorHint="#D63B50" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,13 +79,13 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="221dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:onClick="signInExistingUser"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="240dp"
+        android:background="@drawable/button_clicked"
         android:text="Sign In"
         android:textColor="#D63B50"
         android:textStyle="bold" />
@@ -89,29 +96,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="144dp"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
-        android:background="@null"
+        android:layout_marginBottom="160dp"
+        android:background="@drawable/button_clicked"
         android:text="Forgot Password?"
         android:textAllCaps="false"
-        android:textColor="#147DFF"
+        android:textColor="#2196F3"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/signUpButtonReg"
         style="?android:textAppearanceMedium"
-        android:layout_width="177dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="79dp"
-        android:background="@null"
-        android:onClick="registerNewUser"
-        android:paddingRight="85dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="91dp"
+        android:layout_marginRight="91dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/button_clicked"
         android:text="Sign Up"
-        android:textColor="#147DFF"
+        android:textColor="#2196F3"
         android:textStyle="bold" />
 
     <TextView
@@ -131,6 +138,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/signUpButtonReg"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:layout_toStartOf="@+id/signUpButtonReg"
         android:layout_toLeftOf="@+id/signUpButtonReg"
         android:text="New User ?"

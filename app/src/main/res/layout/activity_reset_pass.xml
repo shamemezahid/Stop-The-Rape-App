@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/defaultDarkBackgroundColor"
     tools:context=".ResetPassActivity">
 
     <TextView
@@ -15,9 +16,9 @@
         android:layout_marginTop="34dp"
         android:padding="10dp"
         android:text="Forgot Password"
-        android:textAllCaps="false"
+        android:textAllCaps="true"
         android:textColor="#D63B50"
-        android:textSize="40sp"
+        android:textSize="35sp"
         android:textStyle="bold"
         tools:ignore="SpUsage" />
 
@@ -28,9 +29,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="133dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
         android:gravity="center_horizontal"
         android:text="We just need your registered Email ID to sent you password reset instructions"
-        android:textColor="@android:color/black"
+        android:textColor="#ffffff"
         android:textSize="15sp" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -39,7 +42,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="196dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
         android:textColorHint="#000">
 
         <EditText
@@ -52,7 +57,9 @@
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
-            android:textColorHint="#D63B50" />
+            android:textColorHint="#D63B50"
+            android:textColor="#ffffff"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Login Button -->
@@ -65,8 +72,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="233dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/button_clicked"
         android:text="Reset Password"
         android:textColor="#D63B50"
         android:textSize="18sp" />
@@ -78,9 +86,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="145dp"
-        android:background="@null"
+        android:background="@drawable/button_clicked"
         android:text="Back"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        />
 
 
     <TextView

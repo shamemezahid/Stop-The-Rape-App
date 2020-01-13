@@ -61,9 +61,9 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
     Button editCustomMessageButton;
     Button editTrustedContactsButton;
 
-    String latitude;
-    String longitude;
-    String phoneId;
+    String latitude = "";
+    String longitude = "";
+    String phoneId ;
     String[] phoneNumbers;
 
     LocationManager locationManager;
@@ -94,10 +94,12 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         editTrustedContactsButton = findViewById(R.id.EditTrustedContactsButton);
         //tv_mainActivity_response = findViewById(R.id.tv_mainActivity_response);
 
+
         locationManager = (LocationManager) getSystemService(Service.LOCATION_SERVICE);
         assert locationManager != null;
         isGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         isNetwork = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
 
         permissions.add(android.Manifest.permission.ACCESS_FINE_LOCATION);
         permissions.add(android.Manifest.permission.ACCESS_COARSE_LOCATION);
@@ -127,6 +129,28 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
 
             getLocation();
         }
+
+        Button refreshLocationButton = findViewById(R.id.refreshLocationButton);
+        refreshLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    getLocation();
+                    updateUI(loc);
+                    Vibrator vibe = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                    vibe.vibrate(100);
+                    Toast.makeText(LocationActivity.this, "Location Updated", Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                    Vibrator vibe = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                    vibe.vibrate(400);
+                    Toast.makeText(LocationActivity.this, "Error Updating Location!", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
 
         shareMyLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -329,7 +353,9 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
                         updateUI(loc);
                     }
                 }*/
-                } else if (isNetwork) {
+                }
+
+                if (isNetwork) {
                     Log.d(TAG, "Network on");
                     locationManager.requestLocationUpdates(
                             LocationManager.NETWORK_PROVIDER,
@@ -389,6 +415,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
 //        }
 //    }
 
+
     private void getLastLocation() {
         try {
             Criteria criteria = new Criteria();
@@ -407,7 +434,6 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
                 result.add(perm);
             }
         }
-
         return result;
     }
 
@@ -497,6 +523,8 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         longitude = Double.toString(loc.getLongitude());
         latitude = Double.toString(loc.getLatitude());
 
+        //Toast.makeText(this, "UI Updated.", Toast.LENGTH_SHORT).show();
+
         rq = Volley.newRequestQueue(this);
         String url ="http://5.51.221.85:1337/track/";
 
@@ -507,7 +535,6 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
                     public void onResponse(String response) {
                         // response
                         Log.d("response", response);
-
                         tv_mainActivity_response.setText(response);
                         Log.d("longitude", longitude);
                         Log.d("latitude", latitude);
@@ -529,7 +556,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
             @Override
             protected Map< String, String > getParams()
             {
-                Map< String, String >  params;
+                Map< String, String > params;
                 params = new HashMap<>();
 
                 params.put("identification", phoneId);
@@ -551,3 +578,4 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         }
     }
 }
+

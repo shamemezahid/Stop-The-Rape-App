@@ -8,18 +8,23 @@
     <TextView
         android:id="@+id/thanaItemText"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
+        android:layout_marginRight="15dp"
         android:layout_toStartOf="@+id/thanaCallButton"
         android:layout_toLeftOf="@+id/thanaCallButton"
-
+        android:textColor="#FFFFFF"
         android:text="Thana" />
 
     <Button
         android:id="@+id/thanaCallButton"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="Call" />
+        android:background="@drawable/button_clicked"
+        android:text="Call"
+        android:textColor="#FFFFFF"
+        />
+
 </RelativeLayout>

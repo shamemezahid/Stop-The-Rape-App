@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/defaultDarkBackgroundColor"
     tools:context=".NavDrawerActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -12,7 +13,6 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
     </com.google.android.material.appbar.AppBarLayout>
-    
 
     <Button
         android:id="@+id/offlineHelpButton"
@@ -24,7 +24,10 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="80dp"
-        android:text="Offline Help" />
+        android:text="Offline Help"
+        android:background="@drawable/button_clicked"
+        android:textColor="#FFFFFF"
+        />
 
     <Button
         android:id="@+id/anonymousHelpButton"
@@ -35,7 +38,10 @@
         android:layout_marginLeft="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="200dp"
-        android:text="Anonymous Help" />
+        android:text="Anonymous Help"
+        android:background="@drawable/button_clicked"
+        android:textColor="#FFFFFF"
+        />
 
     <Button
         android:id="@+id/policeHelplineButton"
@@ -46,7 +52,10 @@
         android:layout_marginLeft="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="320dp"
-        android:text="Police Helpline" />
+        android:text="Police Helpline"
+        android:background="@drawable/button_clicked"
+        android:textColor="#FFFFFF"
+        />
 
     <Button
         android:id="@+id/profileButton"
@@ -55,9 +64,10 @@
         android:layout_gravity="bottom|start"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-
         android:layout_marginBottom="440dp"
-        android:text="Profile" />
+        android:text="Profile"
+        android:background="@drawable/button_clicked"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/logOutButton"
@@ -67,7 +77,10 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="440dp"
-        android:text="Logout" />
+        android:text="Logout"
+        android:background="@drawable/button_clicked"
+        android:textColor="#FFFFFF"
+        />
 
     <TextView
         android:textColor="#FF0000"

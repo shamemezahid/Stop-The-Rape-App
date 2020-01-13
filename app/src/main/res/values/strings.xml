@@ -15,6 +15,7 @@
     <string name="defaultHelpMessageString">GET HELP, I AM IN DANGER!</string>
     <string name="defaultTrustedNumber">+8801681845722</string>
 
+    <!--string name="google_maps_api_key"></string!-->
 
     <string name="gps_enabled">GPS is not Enabled!</string>
     <string name="gps_enabled_question">Do you want to enable GPS?</string>

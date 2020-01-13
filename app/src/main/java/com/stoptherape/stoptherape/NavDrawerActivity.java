@@ -142,8 +142,8 @@ public class NavDrawerActivity extends AppCompatActivity
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 vibe.vibrate(100);
 
-                Toast.makeText(NavDrawerActivity.this, "EKHONO CHOLE NA", Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(NavDrawerActivity.this, ));
+                Toast.makeText(NavDrawerActivity.this, "Loading Maps...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(NavDrawerActivity.this, MapsActivity.class));
             }
         });
 
