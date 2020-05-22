@@ -39,7 +39,7 @@ public class TrustedContactsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
 
                 TrustedContactNumberString = TrustedNumberTextBox.getText().toString();
                 try{
@@ -52,6 +52,7 @@ public class TrustedContactsActivity extends AppCompatActivity {
 
                 }catch (Exception e){
                     Toast.makeText(TrustedContactsActivity.this, "ERROR Saving Trusted Number", Toast.LENGTH_SHORT).show();
+                    vibe.vibrate(50);
                     e.printStackTrace();
                 }
                 TrustedNumberTextBox.setText("");
@@ -63,7 +64,7 @@ public class TrustedContactsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
 
                 String defaultStringEmptyNumber = "";
                 try{
@@ -76,6 +77,7 @@ public class TrustedContactsActivity extends AppCompatActivity {
 
                 }catch (Exception e){
                     Toast.makeText(TrustedContactsActivity.this, "ERROR Deleting Saved Number", Toast.LENGTH_SHORT).show();
+                    vibe.vibrate(50);
                     e.printStackTrace();
                 }
                 TrustedNumberTextBox.setText("");
@@ -88,7 +90,7 @@ public class TrustedContactsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
 
                 try{
                     FileInputStream fin = openFileInput(file);
@@ -99,13 +101,24 @@ public class TrustedContactsActivity extends AppCompatActivity {
                     }
                     TrustedNumberTextBox.setText(tempMessage);
                     if(tempMessage==""){
-                        vibe.vibrate(200);
+                        vibe.vibrate(50);
                         Toast.makeText(TrustedContactsActivity.this, "No Numbers Saved. MAKE SURE TO SAVE A FEW TRUSTED NUMBERS RIGHT NOW", Toast.LENGTH_SHORT).show();
                     }
                 }catch (Exception e){
                     Toast.makeText(TrustedContactsActivity.this, "Error Loading Saved Numbers", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
+            }
+        });
+
+
+        Button BackButton = findViewById(R.id.backButton);
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vibe.vibrate(20);
+                finish();
             }
         });
     }

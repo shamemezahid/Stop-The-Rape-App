@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="LOCATION INFO"
+        android:text="@string/location_info_header"
         android:textSize="35sp"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
@@ -32,7 +32,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="100dp"
         android:gravity="start"
-        android:text="Latitude"
+        android:text="@string/latitude_label"
         android:textSize="20sp"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
@@ -60,7 +60,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="170dp"
         android:gravity="start"
-        android:text="Longitude"
+        android:text="@string/longitude_label"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -88,7 +88,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="240dp"
         android:gravity="start"
-        android:text="Time"
+        android:text="@string/time_label"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -116,7 +116,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="310dp"
         android:gravity="start"
-        android:text="Phone ID"
+        android:text="@string/phone_id_label"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -138,18 +138,18 @@
         android:id="@+id/ShareLocationButton"
         android:layout_width="wrap_content"
         android:layout_height="90dp"
+        android:layout_below="@+id/EditTrustedContactsButton"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/button_clicked"
-        android:text="Share My Location To All Trusted Contacts"
+        android:text="@string/label_share_my_location_to_all_trusted_contacts"
         android:textColor="#FFFFFF" />
 
     <Button
@@ -163,31 +163,31 @@
         android:layout_alignParentRight="true"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="375dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/button_clicked"
         android:padding="15dp"
-        android:text="EDIT CUSTOM MESSAGE"
+        android:text="@string/label_edit_custom_message"
         android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/EditTrustedContactsButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/EditCustomHelpMessageButton"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="460dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/button_clicked"
         android:padding="15dp"
-        android:text="EDIT TRUSTED CONTACTS"
+        android:text="@string/label_edit_trusted_contacts"
         android:textColor="#FFFFFF" />
 
     <TextView
@@ -197,7 +197,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="174dp"
         android:layout_marginBottom="30dp"
-        android:text="#StopTheRape"
+        android:text="@string/hashtag_label_stoptherape"
         android:textAllCaps="true"
         android:textColor="#FF0000"
         android:textStyle="bold" />
@@ -209,16 +209,33 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="300dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/button_clicked"
-        android:gravity="right|top"
+        android:gravity="end|top"
         android:padding="1dp"
-        android:text="↻"
+        android:text="@string/reload_symbol"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="35sp" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_clicked"
+        android:text="Back"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+
+        />
 
 
     <!--

@@ -70,7 +70,7 @@ public class CustomMessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
 
                 customMessage = EditCustomMessageBox.getText().toString();
                 try{
@@ -82,6 +82,7 @@ public class CustomMessageActivity extends AppCompatActivity {
 
                 }catch (Exception e){
                     Toast.makeText(CustomMessageActivity.this, "ERROR Saving Custom Message", Toast.LENGTH_SHORT).show();
+                    vibe.vibrate(50);
                     e.printStackTrace();
                 }
                 EditCustomMessageBox.setText("");
@@ -93,7 +94,7 @@ public class CustomMessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
 
                 String defaultHelpMessageString = getResources().getString(R.string.defaultHelpMessageString);
                 try{
@@ -105,6 +106,7 @@ public class CustomMessageActivity extends AppCompatActivity {
 
                 }catch (Exception e){
                     Toast.makeText(CustomMessageActivity.this, "ERROR Saving Default Message", Toast.LENGTH_SHORT).show();
+                    vibe.vibrate(50);
                     e.printStackTrace();
                 }
                 EditCustomMessageBox.setText("");
@@ -115,7 +117,7 @@ public class CustomMessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
                 try{
                     FileInputStream fin = openFileInput(file);
                     int c;
@@ -126,8 +128,20 @@ public class CustomMessageActivity extends AppCompatActivity {
                     EditCustomMessageBox.setText(tempMessage);
                 }catch (Exception e){
                     Toast.makeText(CustomMessageActivity.this, "Error Loading Saved Message", Toast.LENGTH_SHORT).show();
+                    vibe.vibrate(50);
                     e.printStackTrace();
                 }
+            }
+        });
+
+
+        Button BackButton = findViewById(R.id.backButton);
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vibe.vibrate(20);
+                finish();
             }
         });
 

@@ -82,7 +82,7 @@ public class NavDrawerActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
                 startActivity(new Intent(NavDrawerActivity.this, ProfileActivity.class));
             }
         });
@@ -92,7 +92,7 @@ public class NavDrawerActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(200);
+                vibe.vibrate(50);
                 Toast.makeText(NavDrawerActivity.this, "Press and Hold Button To Logout", Toast.LENGTH_SHORT).show();
             }
         });
@@ -100,7 +100,7 @@ public class NavDrawerActivity extends AppCompatActivity
             @Override
             public boolean onLongClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
                 signOut();
                 return false;
             }
@@ -112,7 +112,7 @@ public class NavDrawerActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
 
                 startActivity(new Intent(NavDrawerActivity.this, HelplineActivity.class));
 
@@ -125,7 +125,7 @@ public class NavDrawerActivity extends AppCompatActivity
             public void onClick(View view) {
 
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
 
 
                 Intent i = new Intent(NavDrawerActivity.this, LocationActivity.class);
@@ -140,7 +140,7 @@ public class NavDrawerActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
 
                 Toast.makeText(NavDrawerActivity.this, "Loading Maps...", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(NavDrawerActivity.this, MapsActivity.class));

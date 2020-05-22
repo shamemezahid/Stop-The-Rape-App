@@ -51,57 +51,57 @@
         android:id="@+id/SaveTrustedNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/MessageAppendLabel"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/button_clicked"
-        android:textColor="#FFFFFF"
-        android:text="Save Numbers" />
+        android:text="Save Numbers"
+        android:textColor="#FFFFFF" />
 
 
     <Button
         android:id="@+id/PreviewTrustedNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/DeleteTrustedNumber"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/button_clicked"
-        android:textColor="#FFFFFF"
-        android:text="Preview Numbers" />
+        android:text="Preview Numbers"
+        android:textColor="#FFFFFF" />
 
 
     <Button
         android:id="@+id/DeleteTrustedNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/SaveTrustedNumber"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/button_clicked"
-        android:textColor="#FFFFFF"
-        android:text="Delete Numbers" />
+        android:text="Delete Numbers"
+        android:textColor="#FFFFFF" />
 
 
     <TextView
@@ -134,5 +134,22 @@
         android:gravity="center"
         android:textColor="#FF1010"
         android:text="Type all your trusted contact numbers separated with a comma. \nExtra spaces and new lines don't matter. \nFor example: 13579, 24680, 12345 \n StopTheRape App will send your Help message to all the numbers when you need it to." />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_clicked"
+        android:text="Back"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+
+        />
 
 </RelativeLayout>

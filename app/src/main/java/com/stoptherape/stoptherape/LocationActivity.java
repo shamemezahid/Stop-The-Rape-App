@@ -130,6 +130,16 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
             getLocation();
         }
 
+        Button BackButton = findViewById(R.id.backButton);
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vibe.vibrate(20);
+                finish();
+            }
+        });
+
         Button refreshLocationButton = findViewById(R.id.refreshLocationButton);
         refreshLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,13 +148,13 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
                     getLocation();
                     updateUI(loc);
                     Vibrator vibe = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-                    vibe.vibrate(100);
+                    vibe.vibrate(20);
                     Toast.makeText(LocationActivity.this, "Location Updated", Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e){
                     e.printStackTrace();
                     Vibrator vibe = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-                    vibe.vibrate(400);
+                    vibe.vibrate(100);
                     Toast.makeText(LocationActivity.this, "Error Updating Location!", Toast.LENGTH_SHORT).show();
 
                 }
@@ -156,7 +166,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(400);
+                vibe.vibrate(100);
 
                 Toast.makeText(LocationActivity.this, "PRESS AND HOLD TO SEND HELP SMS", Toast.LENGTH_SHORT).show();
             }
@@ -166,7 +176,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
             @Override
             public boolean onLongClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(1000);
+                vibe.vibrate(500);
 
                 //String defaultHelpMessageString = getResources().getString(R.string.defaultHelpMessageString);
                 String messageString = "";
@@ -226,7 +236,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
                 }catch(Exception e){
                     e.printStackTrace();
 
-                    vibe.vibrate(100);
+                    vibe.vibrate(20);
                     Toast.makeText(LocationActivity.this, "SET TRUSTED PHONE NUMBER FIRST!", Toast.LENGTH_SHORT).show();
                 }
                 return true;
@@ -237,7 +247,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
                 startActivity(new Intent(LocationActivity.this, CustomMessageActivity.class));
             }
         });
@@ -246,7 +256,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
                 startActivity(new Intent(LocationActivity.this, TrustedContactsActivity.class));
             }
         });
@@ -367,10 +377,17 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
                         if (loc != null)
                             updateUI(loc);
                     }
-                } else {
-                    loc.setLatitude(0);
-                    loc.setLongitude(0);
-                    updateUI(loc);
+                }
+
+                else {
+                    try{
+                        loc.setLatitude(0);
+                        loc.setLongitude(0);
+                        updateUI(loc);
+                    }catch(Exception e){
+                        Toast.makeText(LocationActivity.this, "Location Update Failed!", Toast.LENGTH_SHORT).show();
+                        updateUI(loc);
+                    }
                 }
             }
         } catch (SecurityException e) {

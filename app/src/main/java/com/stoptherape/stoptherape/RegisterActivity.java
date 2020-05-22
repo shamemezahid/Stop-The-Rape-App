@@ -85,21 +85,17 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
-                    return;
                 }
 
-                if (TextUtils.isEmpty(password)) {
+                else if (TextUtils.isEmpty(password)) {
                     Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
-                    return;
                 }
 
-                if (password.length() < 6) {
+                else if (password.length() < 6) {
                     inputPassword.setError(getString(R.string.minimum_password));
                 }
 
-
-
-                if (gender == "choose") {
+                else if (gender == "choose") {
 
                     Toast.makeText(RegisterActivity.this,"You must choose your gender", Toast.LENGTH_SHORT).show();
 
@@ -114,14 +110,14 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
                     newUser.setValue(new UserProfile(userName,email,gender));
 
-                    signUpButton.setVisibility(View.INVISIBLE);
+                    //signUpButton.setVisibility(View.INVISIBLE);
                     progressBar.setVisibility(View.VISIBLE);
 
                     auth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                    Toast.makeText(RegisterActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterActivity.this, "New Account Created Successfully", Toast.LENGTH_SHORT).show();
                                     progressBar.setVisibility(View.GONE);
                                     signInbutton.setVisibility(View.VISIBLE);
                                     // If sign in fails, display a message to the user. If sign in succeeds

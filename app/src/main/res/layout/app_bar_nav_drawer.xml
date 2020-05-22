@@ -59,25 +59,37 @@
 
     <Button
         android:id="@+id/profileButton"
-        android:layout_width="160dp"
+        android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_gravity="bottom|start"
+        android:layout_gravity="top|start"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginBottom="440dp"
+        android:layout_marginTop="30dp"
+
         android:text="Profile"
         android:background="@drawable/button_clicked"
         android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/logOutButton"
-        android:layout_width="160dp"
+        android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="top|end"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="440dp"
+        android:layout_marginTop="30dp"
         android:text="Logout"
+        android:background="@drawable/button_clicked"
+        android:textColor="#FFFFFF"
+        />
+
+    <Button
+        android:id="@+id/feedbackButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="30dp"
+        android:text="Feedback"
         android:background="@drawable/button_clicked"
         android:textColor="#FFFFFF"
         />

@@ -36,5 +36,23 @@
     <string name="user_profile">Profile</string>
     <string name="log_out">Logout</string>
     <string name="sample_mail">shamimbinzahid@gmail.com</string>
+    <string name="location_info_header">LOCATION INFO</string>
+    <string name="latitude_label">Latitude</string>
+    <string name="longitude_label">Longitude</string>
+    <string name="time_label">Time</string>
+    <string name="phone_id_label">Phone ID</string>
+    <string name="label_share_my_location_to_all_trusted_contacts">Share My Location To All Trusted Contacts</string>
+    <string name="label_edit_custom_message">EDIT CUSTOM MESSAGE</string>
+    <string name="label_edit_trusted_contacts">EDIT TRUSTED CONTACTS</string>
+    <string name="hashtag_label_stoptherape">#StopTheRape</string>
+    <string name="reload_symbol">↻</string>
+    <string name="label_back">Back</string>
+    <string name="custom_message_header">CUSTOM MESSAGE</string>
+    <string name="label_enter_your_custom_help_message_here">Enter Your Custom Help Message Here</string>
+    <string name="label_save_message">Save Message</string>
+    <string name="label_set_default">Set Default</string>
+    <string name="label_preview_message">Preview Message</string>
+    <string name="alert_message_custom_message">Make Sure Message isn\'t too long!  Your Location (Google Maps Link) and Time will be appended with this message automatically.</string>
+
 
 </resources>

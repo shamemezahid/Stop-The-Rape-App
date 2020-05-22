@@ -49,9 +49,19 @@ public class MapsActivity extends FragmentActivity implements
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+                vibe.vibrate(20);
 
                 Toast.makeText(MapsActivity.this, "EKHONO CHOLE NA...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button BackButton = findViewById(R.id.backButton);
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vibe.vibrate(20);
+                finish();
             }
         });
     }

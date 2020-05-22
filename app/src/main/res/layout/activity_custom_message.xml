@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="CUSTOM MESSAGE"
+        android:text="@string/custom_message_header"
         android:textSize="35sp"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
@@ -39,7 +38,7 @@
         android:layout_marginRight="25dp"
         android:foregroundGravity="center"
         android:gravity="bottom|center"
-        android:hint="Enter Your Custom Help Message Here"
+        android:hint="@string/label_enter_your_custom_help_message_here"
         android:padding="15dp"
         android:textColor="#FFFFFF"
         android:visibility="visible" />
@@ -48,55 +47,55 @@
         android:id="@+id/SaveCustomMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/MessageAppendLabel"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/button_clicked"
-        android:textColor="#FFFFFF"
-        android:text="Save Message" />
+        android:text="@string/label_save_message"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/SaveDefaultMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/SaveCustomMessage"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/button_clicked"
-        android:textColor="#FFFFFF"
-        android:text="Set Default" />
+        android:text="@string/label_set_default"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/PreviewCustomMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/SaveDefaultMessage"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/button_clicked"
-        android:textColor="#FFFFFF"
-        android:text="Preview Message" />
+        android:text="@string/label_preview_message"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:textColor="#FF0000"
@@ -105,7 +104,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:text="#StopTheRape"
+        android:text="@string/hashtag_label_stoptherape"
         android:textAllCaps="true"
         android:textStyle="bold" />
 
@@ -127,5 +126,23 @@
         android:foregroundGravity="center_vertical|center|center_horizontal"
         android:gravity="center"
         android:textColor="#FF1010"
-        android:text="Make Sure Message isn't too long! \nYour Location (Google Maps Link) and Time will be appended with this message automatically." />
+        android:text="@string/alert_message_custom_message" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_clicked"
+        android:text="@string/label_back"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+
+        />
+
 </RelativeLayout>

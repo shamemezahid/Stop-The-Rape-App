@@ -39,11 +39,23 @@ public class HelplineActivity extends AppCompatActivity {
 
         generateListContent();
 //        lv.setAdapter(new MyListAdaper(HelplineActivity.this, R.layout.thana_list_item, data));
+
         lv.setAdapter(new MyListAdaper(HelplineActivity.this, R.layout.thana_list_item, data));
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(HelplineActivity.this, "List item was clicked at " + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button BackButton = findViewById(R.id.backButton);
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vibe.vibrate(20);
+                finish();
             }
         });
 
@@ -84,7 +96,7 @@ public class HelplineActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                    vibe.vibrate(100);
+                    vibe.vibrate(20);
                     Toast.makeText(getContext(), "Calling Thana..." , Toast.LENGTH_SHORT).show();
 
                     Intent callIntent = new Intent(Intent.ACTION_CALL);

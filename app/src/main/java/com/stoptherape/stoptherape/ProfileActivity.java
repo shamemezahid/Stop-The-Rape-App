@@ -3,9 +3,11 @@ package com.stoptherape.stoptherape;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import android.content.Intent;
+import android.os.Vibrator;
 import android.provider.CalendarContract;
 import android.text.TextUtils;
 import android.view.View;
@@ -76,6 +78,16 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(ProfileActivity.this, "Unable To Load Profile Data",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button BackButton = findViewById(R.id.backButton);
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vibe.vibrate(20);
+                finish();
             }
         });
 
