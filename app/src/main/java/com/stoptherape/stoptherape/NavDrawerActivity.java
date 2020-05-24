@@ -106,6 +106,16 @@ public class NavDrawerActivity extends AppCompatActivity
             }
         });
 
+        Button FeedbackButton = findViewById(R.id.feedbackButton);
+        FeedbackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vibe.vibrate(20);
+                startActivity(new Intent(NavDrawerActivity.this, FeedbackAboutActivity.class));
+            }
+        });
+
 
         Button policeHelplineButton = findViewById(R.id.policeHelplineButton);
         policeHelplineButton.setOnClickListener(new View.OnClickListener() {

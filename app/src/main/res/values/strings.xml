@@ -41,7 +41,7 @@
     <string name="longitude_label">Longitude</string>
     <string name="time_label">Time</string>
     <string name="phone_id_label">Phone ID</string>
-    <string name="label_share_my_location_to_all_trusted_contacts">Share My Location To All Trusted Contacts</string>
+    <string name="label_share_my_location_to_all_trusted_contacts">Share My Location \nTo All Trusted Contacts</string>
     <string name="label_edit_custom_message">EDIT CUSTOM MESSAGE</string>
     <string name="label_edit_trusted_contacts">EDIT TRUSTED CONTACTS</string>
     <string name="hashtag_label_stoptherape">#StopTheRape</string>
@@ -53,6 +53,19 @@
     <string name="label_set_default">Set Default</string>
     <string name="label_preview_message">Preview Message</string>
     <string name="alert_message_custom_message">Make Sure Message isn\'t too long!  Your Location (Google Maps Link) and Time will be appended with this message automatically.</string>
+    <string name="send_feedback_button_text">Click Here to Send Your Feedback,  This will open a Google Form in Your Browser. Fill It Up</string>
+    <string name="about_section">Stop The Rape is a cloud based security alert service app that uses your mobile networks and GPS to send your realtime location to you trusted contacts and anonymous users of the app in case of emergency so that someone can be aware that you just might be in danger and they can be there just in time to save you from a probable mishap. It is a matter of a terrible sorrow that women and even children are being victim of rape everyday. \n No Pessimism shall consume us. Together the youth we can make our society better for everyone. A Small Step of Contribution can Change Everything!</string>
+    <string name="about_beta_version">
+        This is an early beta version of this app, which means features are meant to be buggy where other ones may not even work. There are only two of us working on this right now and we are trying. The stable version to come with more working features and might change how to interact with the app. We planned some features such as,
+        \n\t# The Police Helpline will come with actual numbers of course ;-;
+        \n\t# Asking for help in the anonymous option will broadcast your location to all users nearby as a help message.
+        \n\t# The anonymous help and offline help option triggers are to be merged together with separated customisation options.
+        \n\t# We plan to have the map in the home screen and minimal icon buttons for actions. Making the UX more intuitive.
+        \n\t# We are always open for your suggestions.
 
+        \n\n #StaySafe  #Together  #StopTheRape
+
+    </string>
+    <string name="back_text">Back</string>string>
 
 </resources>

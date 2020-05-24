@@ -1,112 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/defaultDarkBackgroundColor"
-    tools:context=".NavDrawerActivity">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <Button
-        android:id="@+id/offlineHelpButton"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="bottom|end"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="80dp"
-        android:text="Offline Help"
-        android:background="@drawable/button_clicked"
-        android:textColor="#FFFFFF"
-        />
-
-    <Button
-        android:id="@+id/anonymousHelpButton"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="bottom|start"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="200dp"
-        android:text="Anonymous Help"
-        android:background="@drawable/button_clicked"
-        android:textColor="#FFFFFF"
-        />
+    tools:context=".NavDrawerActivity"
+    >
 
     <Button
         android:id="@+id/policeHelplineButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_gravity="bottom|start"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="320dp"
-        android:text="Police Helpline"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/button_clicked"
+        android:text="Police Helpline"
         android:textColor="#FFFFFF"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/anonymousHelpButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feedbackButton" />
+
+    <Button
+        android:id="@+id/anonymousHelpButton"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/button_clicked"
+        android:text="Anonymous Help"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/offlineHelpButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/policeHelplineButton" />
+
+    <Button
+        android:id="@+id/offlineHelpButton"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/button_clicked"
+        android:text="Offline Help"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/anonymousHelpButton" />
+
 
     <Button
         android:id="@+id/profileButton"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_gravity="top|start"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_clicked"
         android:text="Profile"
-        android:background="@drawable/button_clicked"
-        android:textColor="#FFFFFF" />
-
-    <Button
-        android:id="@+id/logOutButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="top|end"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Logout"
-        android:background="@drawable/button_clicked"
         android:textColor="#FFFFFF"
-        />
+        app:layout_constraintEnd_toStartOf="@+id/feedbackButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/feedbackButton"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_gravity="top|center"
-        android:layout_marginTop="30dp"
-        android:text="Feedback"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/button_clicked"
+        android:text="Feedback"
         android:textColor="#FFFFFF"
-        />
+        app:layout_constraintEnd_toStartOf="@+id/logOutButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/profileButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/logOutButton"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/button_clicked"
+        android:text="Logout"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/feedbackButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
-        android:textColor="#FF0000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="bottom|center"
+        android:id="@+id/textView6"
+        android:layout_width="114dp"
+        android:layout_height="19dp"
         android:layout_marginBottom="30dp"
         android:text="#StopTheRape"
         android:textAllCaps="true"
+        android:textColor="#FF0000"
         android:textStyle="bold"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
