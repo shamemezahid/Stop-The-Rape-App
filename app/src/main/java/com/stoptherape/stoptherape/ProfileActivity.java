@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,53 +32,57 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 
+import static com.google.common.primitives.Chars.concat;
+
 public class ProfileActivity extends AppCompatActivity {
 
-    private String name;
-    private String email;
-    private String gender;
-
-    private TextView userName;
-    private TextView userEmail;
-    private TextView userGender;
-
-    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    final FirebaseDatabase db = FirebaseDatabase.getInstance();
-    DatabaseReference ref = db.getReference().child(firebaseAuth.getCurrentUser().getUid());
-    //DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("user");
-
+    private String UID;
+    private TextView userNameText;
+    private TextView userEmailText;
+    private TextView userGenderText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        userName = (TextView) findViewById(R.id.userName);
-        userEmail = (TextView) findViewById(R.id.userEmail);
-        userGender = (TextView) findViewById(R.id.userGender);
+        userNameText = (TextView) findViewById(R.id.userName);
+        userEmailText = (TextView) findViewById(R.id.userEmail);
+        userGenderText = (TextView) findViewById(R.id.userGender);
 
-        ref.addValueEventListener(new ValueEventListener() {
+        //Firebase Database Node Heads are named as FirebaseAuth:UserIDs
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+
+        //FirebaseUser Retrieves UID from FirebaseAuth
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if(firebaseUser!=null){
+            UID = firebaseUser.getUid();
+        }
+
+        //And Then DatabaseReference references the FirebaseDatabase with the UID to retrieve profile information
+        DatabaseReference databaseReference = firebaseDatabase.getReference("user");
+
+        //DataSnapshot on node.user -> node.uid -> ...
+        databaseReference.child(UID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NotNull @NonNull DataSnapshot dataSnapshot) {
                 try{
                     UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
-                    name = userProfile.getName();
-                    userName.setText(name);
-                    email = userProfile.getEmail();
-                    userEmail.setText(email);
-                    gender = userProfile.getGender();
-                    userGender.setText(gender);
+                    String nameLabel = "Name: ";
+                    userNameText.setText(nameLabel.concat(userProfile.getName()));
+                    String emailLabel = "Email: ";
+                    userEmailText.setText(emailLabel.concat(userProfile.getEmail()));
+                    String genderLabel = "Gender: ";
+                    userGenderText.setText(genderLabel.concat(userProfile.getGender()));
                     Toast.makeText(ProfileActivity.this, "Profile Data Loaded Successfully",Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(ProfileActivity.this, firebaseAuth.getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
-                    Toast.makeText(ProfileActivity.this, "Profile Data Load Unsuccessful :"+e.toString(), Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(ProfileActivity.this, firebaseAuth.getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileActivity.this, "Unable to Load Profile Data. "/*e.toString()*/, Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(ProfileActivity.this, "Unable To Load Profile Data",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileActivity.this, "Unable To Reach Database. ",Toast.LENGTH_SHORT).show();
             }
         });
 

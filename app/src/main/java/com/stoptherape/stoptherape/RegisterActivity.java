@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,8 +33,11 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     private ProgressBar progressBar;
 
     private FirebaseAuth auth;
+    private FirebaseUser firebaseUser;
     private DatabaseReference databaseReference;
-    //Appearing Emergency Button
+    private FirebaseDatabase firebaseDatabase;
+    private String UID;
+
     Button emergencyButton;
 
     private Spinner genderSpinner;
@@ -43,30 +47,25 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        auth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("user");
-
-
-
         signInbutton = (Button) findViewById(R.id.logInbutton);
         signUpButton = (Button) findViewById(R.id.signUpButtonReg);
         inputUserName = (EditText) findViewById(R.id.inputUserName);
         inputEmail = (EditText) findViewById(R.id.emailReg);
         inputPassword = (EditText) findViewById(R.id.passwordReg);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        emergencyButton = (Button) findViewById(R.id.emergencyButton);
+        genderSpinner = (Spinner)findViewById(R.id.genderSpinner);
 
         signUpButton.setVisibility(View.VISIBLE);
-
-        emergencyButton = (Button) findViewById(R.id.emergencyButton);
-
-        genderSpinner = (Spinner)findViewById(R.id.genderSpinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(RegisterActivity.this,
                 android.R.layout.simple_spinner_item,paths);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderSpinner.setAdapter(adapter);
         genderSpinner.setOnItemSelectedListener(this);
+
+        auth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference("user");
 
         signInbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,29 +94,33 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                     inputPassword.setError(getString(R.string.minimum_password));
                 }
 
-                else if (gender == "choose") {
+                else if (gender.equals("choose")) {
 
                     Toast.makeText(RegisterActivity.this,"You must choose your gender", Toast.LENGTH_SHORT).show();
 
                 } else {
 
-
-                    DatabaseReference newUser = databaseReference.push();
-
-//                    newUser.child("name").setValue(userName);
-//                    newUser.child("email").setValue(email);
-//                    newUser.child("gender").setValue(gender);
-
-                    newUser.setValue(new UserProfile(userName,email,gender));
-
-                    //signUpButton.setVisibility(View.INVISIBLE);
+                    signUpButton.setVisibility(View.INVISIBLE);
                     progressBar.setVisibility(View.VISIBLE);
+
+                    //previous implementation of db entry
+                    //DatabaseReference newUser = databaseReference.push();
+                    //newUser.setValue(new UserProfile(userName,email,gender));
 
                     auth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     Toast.makeText(RegisterActivity.this, "New Account Created Successfully", Toast.LENGTH_SHORT).show();
+
+                                    //starting new implementation of database entry
+                                    //databaseReference = databaseReference.child("user");
+                                    firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                                    UID = firebaseUser.getUid();
+                                    UserProfile userProfile = new UserProfile(userName,email,gender);
+                                    databaseReference.child(UID).setValue(userProfile);
+                                    //databaseReference.child(firebaseUser.getUid()).setValue(userProfile);
+
                                     progressBar.setVisibility(View.GONE);
                                     signInbutton.setVisibility(View.VISIBLE);
                                     // If sign in fails, display a message to the user. If sign in succeeds
@@ -126,12 +129,14 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                                     if (!task.isSuccessful()) {
                                         Toast.makeText(RegisterActivity.this, "Authentication failed." + task.getException(),
                                                 Toast.LENGTH_SHORT).show();
+                                        signInbutton.setVisibility(View.VISIBLE);
                                     } else {
                                         startActivity(new Intent(RegisterActivity.this, NavDrawerActivity.class));
                                         finish();
                                     }
                                 }
                             });
+
                 }
             }
         });
