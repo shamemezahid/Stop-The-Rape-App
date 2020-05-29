@@ -1,5 +1,6 @@
 package com.stoptherape.stoptherape;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -21,12 +22,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.rpc.Help;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class HelplineActivity extends AppCompatActivity {
 
+    private static final int REQUEST_CALL = 1;
     private ArrayList<String> data = new ArrayList<String>();
 
     String policePhoneNumberString = "999";
@@ -38,7 +42,6 @@ public class HelplineActivity extends AppCompatActivity {
         ListView lv = findViewById(R.id.thanaListView);
 
         generateListContent();
-//        lv.setAdapter(new MyListAdaper(HelplineActivity.this, R.layout.thana_list_item, data));
 
         lv.setAdapter(new MyListAdaper(HelplineActivity.this, R.layout.thana_list_item, data));
 
@@ -62,16 +65,15 @@ public class HelplineActivity extends AppCompatActivity {
     }
 
     private void generateListContent() {
-        for(int i = 1; i <= 20; i++) {
-            data.add("Thana " + i +"\n" + "Information");
+        for (int i = 1; i <= 20; i++) {
+            data.add("Thana " + i + "\n" + "Information");
         }
-
-
     }
 
     private class MyListAdaper extends ArrayAdapter<String> {
         private int layout;
         private List<String> mObjects;
+
         private MyListAdaper(HelplineActivity context, int resource, List<String> objects) {
             super(context, resource, objects);
             mObjects = objects;
@@ -81,7 +83,7 @@ public class HelplineActivity extends AppCompatActivity {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             ViewHolder mainViewholder = null;
-            if(convertView == null) {
+            if (convertView == null) {
                 LayoutInflater inflater = LayoutInflater.from(getContext());
                 convertView = inflater.inflate(layout, parent, false);
                 ViewHolder viewHolder = new ViewHolder();
@@ -97,14 +99,8 @@ public class HelplineActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibe.vibrate(20);
-                    Toast.makeText(getContext(), "Calling Thana..." , Toast.LENGTH_SHORT).show();
-
-                    Intent callIntent = new Intent(Intent.ACTION_CALL);
-                    callIntent.setData(Uri.parse("tel:"+policePhoneNumberString));
-                    if (ActivityCompat.checkSelfPermission(HelplineActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {return;}
-                    startActivity(callIntent);
-
-
+                    //Ask For Permission Required HERE
+                    callPoliceWithPermission();
                 }
             });
             mainViewholder.title.setText(getItem(position));
@@ -112,11 +108,38 @@ public class HelplineActivity extends AppCompatActivity {
             return convertView;
         }
     }
-    public class ViewHolder {
 
-        //ImageView thumbnail;
+    private void callPoliceWithPermission(){
+        if (ActivityCompat.checkSelfPermission(HelplineActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(HelplineActivity.this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_CALL);
+        }
+        else{
+            callPolice();
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_CALL) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                callPolice();
+            } else {
+                Toast.makeText(this, "Please Grant Permission to Make The Call!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void callPolice(){
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:" + policePhoneNumberString));
+        startActivity(callIntent);
+    }
+
+    public class ViewHolder {
         TextView title;
         Button button;
     }
 
 }
+

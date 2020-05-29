@@ -50,7 +50,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
     final String TAG = "GPS";
     private final static int ALL_PERMISSIONS_RESULT = 101;
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
-    private static final long MIN_TIME_BW_UPDATES = 1000 * 60;
+    private static final long MIN_TIME_BW_UPDATES = 1000 * 5;
 
     TextView tv_mainActivity_latitude;
     TextView tv_mainActivity_longitude;
@@ -145,6 +145,45 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
             @Override
             public void onClick(View v) {
                 try{
+
+                    //copied from right above
+
+                    locationManager = (LocationManager) getSystemService(Service.LOCATION_SERVICE);
+                    assert locationManager != null;
+                    isGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+                    isNetwork = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+                    permissions.add(android.Manifest.permission.ACCESS_FINE_LOCATION);
+                    permissions.add(android.Manifest.permission.ACCESS_COARSE_LOCATION);
+                    permissions.add(Manifest.permission.INTERNET);
+                    permissions.add(Manifest.permission.SEND_SMS);
+                    permissionsToRequest = findUnAskedPermissions(permissions);
+
+                    //Toast.makeText(this, "Your Location", Toast.LENGTH_SHORT).show();
+
+                    String IMEINumber = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                    phoneId = IMEINumber;
+                    tv_mainActivity_phoneId.setText(IMEINumber);
+
+                    if (!isGPS && !isNetwork) {
+                        Log.d(TAG, "GPS connection off");
+                        showSettingsAlert();
+                        getLastLocation();
+                    } else {
+                        Log.d(TAG, "GPS connection on");
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            if (permissionsToRequest.size() > 0) {
+                                requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]),
+                                        ALL_PERMISSIONS_RESULT);
+                                canGetLocation = false;
+                            }
+                        }
+
+                        getLocation();
+                    }
+
+                    //copied from just right above
+
                     getLocation();
                     updateUI(loc);
                     Vibrator vibe = (Vibrator) getSystemService(VIBRATOR_SERVICE);

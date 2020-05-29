@@ -73,7 +73,7 @@ public class TrustedContactsActivity extends AppCompatActivity {
                     fout.close();
                     File fileDir = new File(getFilesDir(),file);
                     //Toast.makeText(TrustedContactsActivity.this, "Trusted Numbers Stored in path: "+fileDir, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(TrustedContactsActivity.this, "Trusted Numbers Stored", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TrustedContactsActivity.this, "Trusted Numbers Removed", Toast.LENGTH_SHORT).show();
 
                 }catch (Exception e){
                     Toast.makeText(TrustedContactsActivity.this, "ERROR Deleting Saved Number", Toast.LENGTH_SHORT).show();

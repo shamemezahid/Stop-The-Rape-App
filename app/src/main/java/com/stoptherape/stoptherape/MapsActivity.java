@@ -1,28 +1,20 @@
 package com.stoptherape.stoptherape;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-import com.google.android.gms.maps.CameraUpdateFactory;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import pub.devrel.easypermissions.AfterPermissionGranted;
-import pub.devrel.easypermissions.EasyPermissions;
-
 
 
 public class MapsActivity extends FragmentActivity implements
@@ -66,39 +58,45 @@ public class MapsActivity extends FragmentActivity implements
         });
     }
 
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        showLocationOnMapWithPermission();
+    }
 
-        requestLocationPermission();
+    //Checks if app has permission and asks for permission
+    private void showLocationOnMapWithPermission(){
+        if(ActivityCompat.checkSelfPermission(MapsActivity.this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MapsActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_LOCATION_PERMISSION);
+            // showLocationOnMap here will cause the app to crash.
+            // By the time user gives the permission and the OS gives access,  the program crashes anyway
+        }
+        else{
+            showLocationOnMap();
+        }
+    }
+
+    //Handles activity after asking permission
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
+        if(requestCode == REQUEST_LOCATION_PERMISSION){
+            if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                showLocationOnMap();
+            }else{
+                Toast.makeText(MapsActivity.this, "Please Grant Permission to Load Map Location! ", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    private void showLocationOnMap(){
+        mMap.setMyLocationEnabled(true);
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        // Forward results to EasyPermissions
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
-    }
-
-    @SuppressLint("MissingPermission")
-    @AfterPermissionGranted(REQUEST_LOCATION_PERMISSION)
-    public void requestLocationPermission() {
-        String[] perms = {Manifest.permission.ACCESS_FINE_LOCATION};
-        if(EasyPermissions.hasPermissions(this, perms)) {
-            mMap.setMyLocationEnabled(true);
-            //Toast.makeText(this, "Permission already granted", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            EasyPermissions.requestPermissions(this, "Please grant the location permission", REQUEST_LOCATION_PERMISSION, perms);
-        }
-    }
 
     @Override
     public boolean onMyLocationButtonClick() {
-        //Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
         return false;
     }
 
