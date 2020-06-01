@@ -29,6 +29,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
     private EditText inputUserName, inputEmail, inputPassword;
     private String gender, userName, email, password;
+    private boolean shareLoc = false;
     private Button signInbutton, signUpButton;
     private ProgressBar progressBar;
 
@@ -37,8 +38,6 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase;
     private String UID;
-
-    Button emergencyButton;
 
     private Spinner genderSpinner;
     private static final String[]paths = {"Choose", "Female", "Male"};
@@ -53,7 +52,6 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         inputEmail = (EditText) findViewById(R.id.emailReg);
         inputPassword = (EditText) findViewById(R.id.passwordReg);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        emergencyButton = (Button) findViewById(R.id.emergencyButton);
         genderSpinner = (Spinner)findViewById(R.id.genderSpinner);
 
         signUpButton.setVisibility(View.VISIBLE);
@@ -61,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                 android.R.layout.simple_spinner_item,paths);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         genderSpinner.setAdapter(adapter);
         genderSpinner.setOnItemSelectedListener(this);
 
@@ -114,12 +113,10 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                                     Toast.makeText(RegisterActivity.this, "New Account Created Successfully", Toast.LENGTH_SHORT).show();
 
                                     //starting new implementation of database entry
-                                    //databaseReference = databaseReference.child("user");
                                     firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                                     UID = firebaseUser.getUid();
-                                    UserProfile userProfile = new UserProfile(userName,email,gender);
+                                    UserProfile userProfile = new UserProfile(userName,email,gender,shareLoc);
                                     databaseReference.child(UID).setValue(userProfile);
-                                    //databaseReference.child(firebaseUser.getUid()).setValue(userProfile);
 
                                     progressBar.setVisibility(View.GONE);
                                     signInbutton.setVisibility(View.VISIBLE);
@@ -143,13 +140,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
-    /////////////////////////////////////
-    /// this code is for spinner item ///
-    /////////////////////////////////////
 
     public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-
-
 
         switch (position) {
             case 0:

@@ -31,19 +31,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginTop="30dp"
         android:gravity="left"
         android:text="Name: "
         android:textColor="#FFFFFF"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintStart_toStartOf="@+id/userGender"
+        app:layout_constraintTop_toBottomOf="@+id/ProfileLabel" />
 
     <TextView
         android:id="@+id/userGender"
@@ -51,16 +46,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:foregroundGravity="left"
         android:gravity="left"
         android:text="Gender: "
         android:textColor="#FFFFFF"
         android:textSize="15sp"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/userName"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintStart_toStartOf="@+id/userEmail"
+        app:layout_constraintTop_toBottomOf="@+id/userName" />
 
     <TextView
         android:id="@+id/userEmail"
@@ -69,19 +63,81 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
 
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
         android:foregroundGravity="left"
         android:gravity="left"
         android:text="Email: "
         android:textColor="#FFFFFF"
         android:textSize="15sp"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/userGender"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userGender" />
+
+
+    <Button
+        android:id="@+id/editProfileDataButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_clicked"
+        android:gravity="center"
+        android:paddingHorizontal="30dp"
+        android:text="Edit Profile Data"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userEmail" />
+
+    <TextView
+        android:id="@+id/MessageAppendLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="30dp"
+        android:foregroundGravity="center_vertical|center|center_horizontal"
+        android:gravity="center"
+        android:text="To share your location while you're in danger the background location service is necessary. But you can stop the background service in idle if you like, It will relaunch when you reopen the app."
+        android:textColor="#FF1010"
+        app:layout_constraintBottom_toTopOf="@+id/stopBackgroundServiceButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProfileDataButton"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <Button
+        android:id="@+id/stopBackgroundServiceButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_clicked"
+        android:gravity="center"
+        android:paddingHorizontal="30dp"
+        android:text="Stop Background Service and Close App! "
+        android:textAlignment="center"
+        android:textColor="#FF0000"
+        app:layout_constraintBottom_toTopOf="@+id/backButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <TextView
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -106,6 +162,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/button_clicked"
+        android:gravity="center"
         android:text="@string/label_back"
         android:textAlignment="center"
         android:textColor="#FFFFFF"

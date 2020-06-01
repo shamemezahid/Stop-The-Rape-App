@@ -39,31 +39,25 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class NavDrawerActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class NavDrawerActivity extends AppCompatActivity{
+
+    // used to implement(s) NavigationView.OnNavigationItemSelectedListener
+
     FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_nav_drawer);
+        //setContentView(R.layout.app_bar_nav_drawer);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-//        app bar nav drawer xml er moddhe bhore de
-//        <!--androidx.appcompat.widget.Toolbar
-//        android:id="@+id/toolbar"
-//        android:layout_width="match_parent"
-//        android:layout_height="?attr/actionBarSize"
-//        android:background="?attr/colorPrimary"
-//        app:popupTheme="@style/AppTheme.PopupOverlay" />
+        //helps app to close from the profile page
+        if (getIntent().getBooleanExtra("EXIT", false)) {
+            finish();
+        }
 
-
-        //get firebase auth instance
         auth = FirebaseAuth.getInstance();
-
-
-        //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         authListener = new FirebaseAuth.AuthStateListener() {
@@ -96,6 +90,7 @@ public class NavDrawerActivity extends AppCompatActivity
                 Toast.makeText(NavDrawerActivity.this, "Press and Hold Button To Logout", Toast.LENGTH_SHORT).show();
             }
         });
+
         logoutButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -140,8 +135,6 @@ public class NavDrawerActivity extends AppCompatActivity
 
                 Intent i = new Intent(NavDrawerActivity.this, LocationActivity.class);
                 startActivity(i);
-                /*Snackbar.make(view, "Your current Location", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
             }
         });
 
@@ -169,29 +162,6 @@ public class NavDrawerActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.nav_drawer, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.log_out) {
-
-            //startActivity(new Intent(NavDrawerActivity.this, LoginActivity.class));
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     // this listener will be called when there is change in firebase user session
     FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
@@ -206,45 +176,12 @@ public class NavDrawerActivity extends AppCompatActivity
                 finish();
             }
         }
-
-
-
     };
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.user_profile) {
-            startActivity(new Intent(NavDrawerActivity.this, ProfileActivity.class));
-
-        } else if (id == R.id.log_out) {
-            signOut();
-        } //else if (id == R.id.nav_slideshow) {
-
-        //} else if (id == R.id.nav_manage) {
-
-        //}
-        else if (id == R.id.nav_share) {
-
-            //dev phase will redirect to github repository
-
-        } else if (id == R.id.nav_send) {
-
-            //dev phase will open mail to send mail
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
     private void signOut() {
-
+        //signing out from firebase an stopping the background location service
         auth.signOut();
-
+        stopService(new Intent(NavDrawerActivity.this, BackgroundLocationService.class));
     }
 
     @Override
@@ -266,4 +203,5 @@ public class NavDrawerActivity extends AppCompatActivity
             auth.removeAuthStateListener(authListener);
         }
     }
+
 }

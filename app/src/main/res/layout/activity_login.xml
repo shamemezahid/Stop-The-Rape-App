@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/defaultDarkBackgroundColor"
@@ -12,26 +13,31 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
         android:text="Sign In"
         android:textAllCaps="true"
         android:textColor="#D63B50"
         android:textSize="35sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="160dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:textColorHint="#000">
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:textColorHint="#999999"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <EditText
             android:id="@+id/email"
@@ -44,19 +50,22 @@
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:textColor="#FFFFFF"
-            android:textColorHint="#D63B50" />
+            tools:textColorHint="#999999" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="240dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:textColorHint="#000">
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:textColorHint="#999999"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
         <EditText
             android:id="@+id/password"
@@ -69,92 +78,95 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:textColor="#FFFFFF"
-            android:textColorHint="#D63B50" />
+            tools:textColorHint="#999999" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/signInButton"
         style="?android:textAppearanceMedium"
-
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/button_clicked"
         android:text="Sign In"
-        android:textColor="#D63B50"
-        android:textStyle="bold" />
+        android:textColor="#2299EE"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
 
     <Button
         android:id="@+id/forgotPassButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         android:background="@drawable/button_clicked"
         android:text="Forgot Password?"
         android:textAllCaps="false"
-        android:textColor="#2196F3"
-        android:textSize="18sp" />
+        android:textColor="#FF0000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
 
     <Button
         android:id="@+id/signUpButtonReg"
         style="?android:textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="91dp"
-        android:layout_marginRight="91dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/button_clicked"
         android:text="Sign Up"
-        android:textColor="#2196F3"
-        android:textStyle="bold" />
+        android:textColor="#2299EE"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:textColor="#FF0000"
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:text="#StopTheRape"
         android:textAllCaps="true"
-        android:textStyle="bold" />
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/signUpButtonReg"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_toStartOf="@+id/signUpButtonReg"
-        android:layout_toLeftOf="@+id/signUpButtonReg"
-        android:text="New User ?"
+        android:layout_marginBottom="10dp"
+        android:text="New User ?  "
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="#000"
-        android:textSize="18sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/signUpButtonReg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignTop="@+id/signInButton"
-        android:layout_centerHorizontal="true"
         android:layout_gravity="center|bottom"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgotPassButton" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

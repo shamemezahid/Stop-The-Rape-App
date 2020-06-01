@@ -40,6 +40,8 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userNameText;
     private TextView userEmailText;
     private TextView userGenderText;
+    private Button editProfileData;
+    private Button stopBackgroundService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,7 @@ public class ProfileActivity extends AppCompatActivity {
         DatabaseReference databaseReference = firebaseDatabase.getReference("user");
 
         //DataSnapshot on node.user -> node.uid -> ...
-        databaseReference.child(UID).addValueEventListener(new ValueEventListener() {
+        databaseReference.child(UID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NotNull @NonNull DataSnapshot dataSnapshot) {
                 try{
@@ -75,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity {
                     userEmailText.setText(emailLabel.concat(userProfile.getEmail()));
                     String genderLabel = "Gender: ";
                     userGenderText.setText(genderLabel.concat(userProfile.getGender()));
-                    Toast.makeText(ProfileActivity.this, "Profile Data Loaded Successfully",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ProfileActivity.this, "Profile Data Loaded Successfully",Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Toast.makeText(ProfileActivity.this, "Unable to Load Profile Data. "/*e.toString()*/, Toast.LENGTH_SHORT).show();
                 }
@@ -83,6 +85,37 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(ProfileActivity.this, "Unable To Reach Database. ",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        editProfileData = findViewById(R.id.editProfileDataButton);
+        editProfileData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vibe.vibrate(20);
+                Toast.makeText(ProfileActivity.this, "Not Implemented Yet ! ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        stopBackgroundService = findViewById(R.id.stopBackgroundServiceButton);
+        stopBackgroundService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vibe.vibrate(20);
+                try{
+                    stopService(new Intent(ProfileActivity.this, BackgroundLocationService.class));
+
+                    Intent intent = new Intent(ProfileActivity.this, NavDrawerActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("EXIT", true);
+                    startActivity(intent);
+
+                    //Toast.makeText(ProfileActivity.this, "Background service Stopped. ", Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    Toast.makeText(ProfileActivity.this, "Background service not running.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

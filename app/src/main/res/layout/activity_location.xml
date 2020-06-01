@@ -31,7 +31,7 @@
         android:id="@+id/latitudeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:gravity="start"
         android:text="@string/latitude_label"
         android:textColor="#FFFFFF"
@@ -176,25 +176,21 @@
     <Button
         android:id="@+id/ShareLocationButton"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/button_clicked"
-        android:padding="10dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
+        android:padding="30dp"
         android:text="@string/label_share_my_location_to_all_trusted_contacts"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EditTrustedContactsButton" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <TextView
@@ -216,6 +212,7 @@
         android:layout_height="50dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/button_clicked"
         android:gravity="end"
         android:padding="1dp"
@@ -225,9 +222,7 @@
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/EditCustomHelpMessageButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/backButton"
@@ -243,13 +238,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="340dp" />
 
 
     <!--

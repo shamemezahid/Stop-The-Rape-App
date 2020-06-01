@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">#404E62</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">#10A7FF</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -15,6 +15,13 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name = "SpinnerTheme" parent="TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
+        <item name = "android:textColor">#FFFFFF</item>
+        <item name = "android:textColorHint">#FFFFFF</item>
+        <item name = "android:textColorPrimary">#FFFFFF</item>
+        <item name = "android:colorBackground">#FFFFFF</item>
     </style>
 
 </resources>

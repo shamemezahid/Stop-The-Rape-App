@@ -1,9 +1,7 @@
 package com.stoptherape.stoptherape;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.annotation.NonNull;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -29,14 +27,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import java.io.FileInputStream;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -129,6 +125,8 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
 
             getLocation();
         }
+
+        startBackgroundLocationService();
 
         Button BackButton = findViewById(R.id.backButton);
         BackButton.setOnClickListener(new View.OnClickListener() {
@@ -624,6 +622,11 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
         };
         rq.add(postRequest);
 
+    }
+
+    public void startBackgroundLocationService(){
+        startService(new Intent(LocationActivity.this, BackgroundLocationService.class));
+        //Toast.makeText(LocationActivity.this, "Location Service Enabled.", Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.stoptherape.stoptherape;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -35,6 +36,7 @@ public class MapsActivity extends FragmentActivity implements
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        startBackgroundLocationService();
 
         Button HelpButton = findViewById(R.id.HelpButton);
         HelpButton.setOnClickListener(new View.OnClickListener() {
@@ -103,5 +105,9 @@ public class MapsActivity extends FragmentActivity implements
     @Override
     public void onMyLocationClick(@NonNull Location location) {
         Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
+    }
+
+    public void startBackgroundLocationService(){
+        startService(new Intent(MapsActivity.this, BackgroundLocationService.class));
     }
 }
