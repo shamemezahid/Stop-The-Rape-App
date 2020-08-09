@@ -38,6 +38,8 @@ public class MapsActivity extends FragmentActivity implements
 
         startBackgroundLocationService();
 
+
+
         Button HelpButton = findViewById(R.id.HelpButton);
         HelpButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -40,8 +40,13 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userNameText;
     private TextView userEmailText;
     private TextView userGenderText;
-    private Button editProfileData;
-    private Button stopBackgroundService;
+
+    //Firebase Database Node Heads are named as FirebaseAuth:UserIDs
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+
+    //And Then DatabaseReference references the FirebaseDatabase with the UID to retrieve profile information
+    DatabaseReference databaseReference = firebaseDatabase.getReference("user");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,18 +57,11 @@ public class ProfileActivity extends AppCompatActivity {
         userEmailText = (TextView) findViewById(R.id.userEmail);
         userGenderText = (TextView) findViewById(R.id.userGender);
 
-        //Firebase Database Node Heads are named as FirebaseAuth:UserIDs
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-
         //FirebaseUser Retrieves UID from FirebaseAuth
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if(firebaseUser!=null){
             UID = firebaseUser.getUid();
         }
-
-        //And Then DatabaseReference references the FirebaseDatabase with the UID to retrieve profile information
-        DatabaseReference databaseReference = firebaseDatabase.getReference("user");
 
         //DataSnapshot on node.user -> node.uid -> ...
         databaseReference.child(UID).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -71,11 +69,11 @@ public class ProfileActivity extends AppCompatActivity {
             public void onDataChange(@NotNull @NonNull DataSnapshot dataSnapshot) {
                 try{
                     UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
-                    String nameLabel = "Name: ";
+                    String nameLabel = "Name:  ";
                     userNameText.setText(nameLabel.concat(userProfile.getName()));
-                    String emailLabel = "Email: ";
+                    String emailLabel = "Email:  ";
                     userEmailText.setText(emailLabel.concat(userProfile.getEmail()));
-                    String genderLabel = "Gender: ";
+                    String genderLabel = "Gender:  ";
                     userGenderText.setText(genderLabel.concat(userProfile.getGender()));
                     //Toast.makeText(ProfileActivity.this, "Profile Data Loaded Successfully",Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
@@ -88,7 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        editProfileData = findViewById(R.id.editProfileDataButton);
+        Button editProfileData = findViewById(R.id.editProfileDataButton);
         editProfileData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,24 +96,16 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        stopBackgroundService = findViewById(R.id.stopBackgroundServiceButton);
+        Button stopBackgroundService = findViewById(R.id.stopBackgroundServiceButton);
         stopBackgroundService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(20);
-                try{
-                    stopService(new Intent(ProfileActivity.this, BackgroundLocationService.class));
-
-                    Intent intent = new Intent(ProfileActivity.this, NavDrawerActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("EXIT", true);
-                    startActivity(intent);
-
-                    //Toast.makeText(ProfileActivity.this, "Background service Stopped. ", Toast.LENGTH_SHORT).show();
-                }catch (Exception e){
-                    Toast.makeText(ProfileActivity.this, "Background service not running.", Toast.LENGTH_SHORT).show();
-                }
+                vibe.vibrate(100);
+                databaseReference.child(UID).child("shareLoc").setValue(false);
+                databaseReference.child(UID).child("shareLoc").setValue(false);
+                databaseReference.child(UID).child("shareLoc").setValue(false);
+                Toast.makeText(ProfileActivity.this, "Location Share Stopped!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -129,6 +119,45 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        Button logoutButton = findViewById(R.id.logOutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vibe.vibrate(50);
+                Toast.makeText(ProfileActivity.this, "Press and Hold Button To Logout", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        logoutButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vibe.vibrate(20);
+                SignOut();
+                finish();
+                return false;
+            }
+        });
+
     }
+
+    private void SignOut(){
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signOut();
+    }
+
+    private void killFirstActivity(){
+        try{
+            //stopService(new Intent(ProfileActivity.this, BackgroundLocationService.class));
+            Intent intent = new Intent(ProfileActivity.this, NavDrawerActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("EXIT", true);
+            startActivity(intent);
+        }catch (Exception e){
+            Toast.makeText(ProfileActivity.this, "Background service not running.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
 

@@ -23,8 +23,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:background="@drawable/button_clicked"
-        android:text="Call"
-        android:textColor="#FFFFFF"
-        />
+        android:drawableTop="@drawable/icon_call"
+        android:padding="10dp"
+        android:text="CALL"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>
